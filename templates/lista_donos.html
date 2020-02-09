@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista</title>
+</head>
+<body>
+<center><h1>Lista de Proprietarios</h1>
+<a href="{% url 'listaD' %}">Lista de Proprietarios</a>||<a href="{% url 'listaI' %}">Lista de Casas</a>
+
+           <table>
+               <tr ><th>Nome</th><th>Add Imovel</th><th>Alterar</th><th>Deletar</th></tr>
+
+      {% for clientes in clientes %}
+                   <tr><td>{{ clientes.nome }}</td><td><a href="{% url 'new_imovel' clientes.id %}">
+                   <button type="button">AddImoveis</button></a></td>
+              <td><a href="{% url 'up_dono' clientes.id %}"><button type="button>">
+                  Alterar</button> </a> </td>
+             <td>  <a href="{% url 'del_dono' clientes.id %}"><button type="button>">
+                 Deletar</button> </a></td> </tr>
+      {% endfor %}
+               </table>
+    <br/>
+               <a href="{% url 'new_dono' %}"> <button type="submit">Add Proprietario</button></a>
+
+</center>
+</body>
+</html>

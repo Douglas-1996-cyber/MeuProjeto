@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista</title>
+</head>
+<body>
+<center><h1>Lista de Imoveis</h1>
+
+<a href="{% url 'listaD' %}">Lista de Proprietarios</a>||<a href="{% url 'listaI' %}">Lista de Casas</a>
+       <table width="70%">
+               <tr ><th>Nome Do Proprietario</th><th>Endereço</th><th>Area Total</th><th>Valor Venal Total</th>
+                   <th>Valor do Imposto</th><th>Alterar/Calcular</th><th>Deletar</th></tr>
+      {% for imovel in imovel %}
+           <tr><td>{{ imovel.id_proprietario }}</td><td> {{ imovel.endereco}}</td><td>{{ imovel.area_total }}</td>
+               <td>{{imovel.valor_venal_total}}</td><td>{{imovel.valor_imposto}}</td>
+               <td><a href="{% url 'up_imovel' imovel.id %}"><button type="button>">
+                   Alterar/Calcular</button> </a></td>
+               <td><a href="{% url 'del_imovel' imovel.id %}"><button type="button>">
+                   Deletar</button> </a></td></tr>
+
+      {% endfor %}
+       </table>
+</center>
+</body>
+</html>
